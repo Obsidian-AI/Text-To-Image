@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Text to Picture Encoder and Decoder</title>
+  </head>
+  <style media="screen">
+    body{
+      background-color: green;
+    }
+    #Decryption{
+      position: absolute;
+      left: 50%;
+      top: 0%;
+    }
+    #Information{
+      width: 50%;
+      height: 50%;
+      background: #FCF3CF;
+    }
+    #download{
+      background-color: white;
+    }
+  </style>
+  <body>
+    <div id="Encryption">
+      <h1>Encryption</h1>
+      <h3>Step 1: Enter the hidden message</h3>
+      <textarea id="Message" cols="50" rows="10" placeholder="Message:"></textarea>
+      <br>
+      <h3>Step 2: Upload an Image</h3>
+      <input type="file" value="Upload Image" onchange="loadFile(event, 'SourceImage');">
+      <br>
+      <h3>Step 3: Begin Encrypting</h3>
+      <button id="Encrypt" onclick="init();">Encrypt</button>
+      <br>
+      <img style="display: none;" id="SourceImage" src="" crossorigin="Anonymous">
+      <br>
+      <canvas style="display: none;" id="Canvas1"></canvas>
+      <h3>Step 4: Download the updated file</h3>
+      <a href="" download="modifiedImage.jpg" id="download" onclick="download_img(this)">Download</a>
+      <br>
+    </div>
+    <br><br><br><br>
+    <div id="Decryption">
+      <h1>Decryption</h1>
+      <h3>Step 1: Upload the Original File</h3>
+      <input type="file" id="input1" onchange="loadFile(event, 'decrypt-original');">
+      <h3>Step 2: Upload the Modified File</h3>
+      <input type="file" id="input2" onchange="loadFile(event, 'decrypt-modified');">
+      <h3>Step 3: Begin Decrypting</h3>
+      <button type="button" id="Decrypt" onclick="initiate(); ImageData();">Decrypt</button>
+      <!--Hidden Content-->
+      <img style="display: none;" src="" id="decrypt-original">
+      <img style="display: none;" src="" id="decrypt-modified">
+      <canvas id="Canvas2" style="display: none;"></canvas>
+      <canvas id="Canvas3" style="display: none;"></canvas>
+      <!--Hidden Content-->
+      <h4>Decrypted Message:</h4>
+      <p id="decrypted-message"></p>
+    </div>
+    <div id="Information">
+      <h4 style="width: 90%; height: 90%;">This is a tool that is capable of encrypting data onto images. This is the V3 version which is much more compact and has a much more consise code. The code for this image also allows the image to encrypt white data points making it faster during the encryption process. The decryption process is slowed down however due to the process also subracting. The code was almost cut a third to 450 lines. </h4>
+    </div>
+  </body>
+
+  <script src="encrypt.js" charset="utf-8"></script>
+  <script src="loadfile.js" charset="utf-8"></script>
+  <script src="decrypt.js" charset="utf-8"></script>
+</html>
